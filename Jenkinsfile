@@ -7,7 +7,8 @@ pipeline {
                 echo 'Building..'
                 echo env.BRANCH_NAME
                 
-                sh './mvnw clean'
+                sh './mvnw clean package'
+                sh 'ls'
             }
         }
         stage('Test') {
