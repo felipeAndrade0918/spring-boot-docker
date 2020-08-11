@@ -5,6 +5,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                echo env.BRANCH_NAME
+                
+                if (true) {
+                	echo 'Flow control works!'
+                }
             }
         }
         stage('Test') {
