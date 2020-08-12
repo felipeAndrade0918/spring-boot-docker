@@ -23,7 +23,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'docker run -d -p 8082:8082 $APPNAME'
+                sh 'docker rm -f $APPNAME'
+                sh 'docker run -d -p 8082:8082 --name $APPNAME $APPNAME'
             }
         }
     }
