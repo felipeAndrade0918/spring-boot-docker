@@ -8,13 +8,15 @@ pipeline {
                 echo env.BRANCH_NAME
                 
                 sh './mvnw clean package'
-                sh 'ls'
+                stash includes: 'target/*.jar', name: 'targetfiles'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
+        stage('Build Docker image') {
+        	steps {
+        		echo 'Building Docker image...'
+        		unstash 'targetfiles'
+        		sh 'ls'
+        	}
         }
         stage('Deploy') {
             steps {
