@@ -1,5 +1,9 @@
 pipeline {
     agent { label 'docker-java' }
+    
+    environment { 
+        APPNAME = 'java-docker'
+    }
 
     stages {
         stage('Build') {
@@ -13,13 +17,13 @@ pipeline {
         stage('Build Docker image') {
         	steps {
         		echo 'Building Docker image...'
-        		sh 'docker build -t java-docker .'
+        		sh 'docker build -t $APPNAME .'
         	}
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'docker run -d -p 8082:8082 java-docker'
+                sh 'docker run -d -p 8082:8082 $APPNAME'
             }
         }
     }
