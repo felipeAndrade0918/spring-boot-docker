@@ -8,19 +8,18 @@ pipeline {
                 echo env.BRANCH_NAME
                 
                 sh './mvnw clean package'
-                stash includes: 'target/*.jar', name: 'targetfiles'
             }
         }
         stage('Build Docker image') {
         	steps {
         		echo 'Building Docker image...'
-        		unstash 'targetfiles'
-        		sh 'ls'
+        		sh 'docker build -t java-docker .'
         	}
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh 'docker run -d -p 8082:8082 java-docker'
             }
         }
     }
