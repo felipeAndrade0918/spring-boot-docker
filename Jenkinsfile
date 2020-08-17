@@ -16,12 +16,12 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker image') {
-        	steps {
-        		echo 'Building Docker image...'
-        		sh 'docker build -t $APPNAME .'
-        	}
-        }
+        // stage('Build Docker image') {
+        // 	steps {
+        // 		echo 'Building Docker image...'
+        // 		sh 'docker build -t $APPNAME .'
+        // 	}
+        // }
         // stage('Deploy') {
         //     steps {
         //         echo 'Deploying....'
