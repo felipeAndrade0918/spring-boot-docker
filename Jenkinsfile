@@ -12,20 +12,21 @@ pipeline {
                     echo 'Building..'
                     echo env.BRANCH_NAME
                     
-                    sh './mvnw clean package'
+                    // sh './mvnw clean package'
+                    echo "Running ${env.WAT}"
                 }
             }
         }
-        stage('Build Docker image') {
-        	steps {
-                container('docker') {
-                    echo 'Building Docker image...'
-                    // sh 'docker build -t $APPNAME .'
-                    sh 'docker images'
-                    sh 'ls'
-                }
-        	}
-        }
+        // stage('Build Docker image') {
+        // 	steps {
+        //         container('docker') {
+        //             echo 'Building Docker image...'
+        //             // sh 'docker build -t $APPNAME .'
+        //             sh 'docker images'
+        //             sh 'ls'
+        //         }
+        // 	}
+        // }
         // stage('Deploy') {
         //     steps {
         //         echo 'Deploying....'
