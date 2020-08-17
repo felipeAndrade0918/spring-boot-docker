@@ -8,10 +8,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-                echo env.BRANCH_NAME
-                
-                sh './mvnw clean package'
+                container('jnlp') {
+                    echo 'Building..'
+                    echo env.BRANCH_NAME
+                    
+                    sh './mvnw clean package'
+                }
             }
         }
         stage('Build Docker image') {
