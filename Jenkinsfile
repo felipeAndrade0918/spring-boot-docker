@@ -2,7 +2,7 @@ pipeline {
     agent { label 'docker-java' }
     
     environment { 
-        APPNAME = 'java-docker'
+        APPNAME = 'felipeandrade0918/java-docker'
     }
 
     stages {
