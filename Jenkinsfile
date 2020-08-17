@@ -8,21 +8,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                container('jnlp') {
-                    echo 'Building..'
-                    echo env.BRANCH_NAME
-                    
-                    sh './mvnw clean package'
-                }
+                echo 'Building..'
+                echo env.BRANCH_NAME
+                
+                sh './mvnw clean package'
             }
         }
         stage('Build Docker image') {
         	steps {
-                container('dind') {
-                    echo 'Building Docker image...'
-                    sh 'docker ps'
-                    // sh 'docker build -t $APPNAME .'
-                }
+        		echo 'Building Docker image...'
+        		sh 'docker build -t $APPNAME .'
         	}
         }
         // stage('Deploy') {
