@@ -8,27 +8,24 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // container('jnlp') {
-                //     echo 'Building..'
-                //     echo env.BRANCH_NAME
+                container('jnlp') {
+                    echo 'Building..'
+                    echo env.BRANCH_NAME
                     
-                //     sh './mvnw clean package'
-                // }
-                container('docker') {
-                    sh "docker login -u ${env.USER} -p ${env.PASS}"
+                    sh './mvnw clean package'
                 }
             }
         }
-        // stage('Build Docker image') {
-        // 	steps {
-        //         container('docker') {
-        //             echo 'Building Docker image...'
-        //             // sh 'docker build -t $APPNAME .'
-        //             sh 'docker images'
-        //             sh 'ls'
-        //         }
-        // 	}
-        // }
+        stage('Build Docker image') {
+        	steps {
+                container('docker') {
+                    echo 'Building Docker image...'
+                    sh 'docker build -t $APPNAME .'
+                    sh "docker login -u ${env.USER} -p ${env.PASS}"
+                    sh 'docker push $APPNAME'
+                }
+        	}
+        }
         // stage('Deploy') {
         //     steps {
         //         echo 'Deploying....'
