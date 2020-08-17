@@ -20,7 +20,9 @@ pipeline {
         	steps {
                 container('docker') {
                     echo 'Building Docker image...'
-                    sh 'docker build -t $APPNAME .'
+                    // sh 'docker build -t $APPNAME .'
+                    sh 'docker images'
+                    sh 'ls'
                 }
         	}
         }
