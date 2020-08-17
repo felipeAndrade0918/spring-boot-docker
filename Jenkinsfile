@@ -23,7 +23,6 @@ pipeline {
                     // sh 'docker build -t $APPNAME .'
                     sh 'docker images'
                     sh 'ls'
-                    sh 'echo ${env.WAT}'
                 }
         	}
         }
