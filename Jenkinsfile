@@ -15,7 +15,7 @@ pipeline {
                 //     sh './mvnw clean package'
                 // }
                 container('docker') {
-                    sh "docker login -u ${env.WAT}"
+                    sh "docker login -u ${env.USER} -p ${env.PASS}"
                 }
             }
         }
