@@ -2,8 +2,7 @@ apiVersion: "v1"
 kind: "Pod"
 metadata:
   labels:
-    jenkins: "slave"
-    jenkins/label: "docker-java-yaml"
+    jenkins/custom/label: "docker-java-yaml"
 spec:
   containers:
   - name: "jnlp"
