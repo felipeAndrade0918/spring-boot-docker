@@ -1,5 +1,9 @@
 pipeline {
-    agent { label 'docker-java' }
+    agent {
+        kubernetes {
+            yamlFile 'pod.yaml'
+        }
+    }
     
     environment { 
         APPNAME = 'felipeandrade0918/java-docker'
