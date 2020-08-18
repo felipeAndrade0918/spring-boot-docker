@@ -8,6 +8,9 @@ spec:
   - name: "jnlp"
     image: "felipeandrade0918/jenkins-jnlp-aws-docker"
     imagePullPolicy: "IfNotPresent"
+    env:
+      - name: "USER"
+        value: "USER!!"
     volumeMounts:
     - mountPath: "/var/run/docker.sock"
       name: "docker-socket"
@@ -18,9 +21,6 @@ spec:
     tty: true
     workingDir: "/home/jenkins"
   - name: "docker"
-    env:
-    - name: "USER"
-      value: "USER!!"
     args:
     - "cat"
     command:
