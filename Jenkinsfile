@@ -8,22 +8,22 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                container('jnlp') {
+                // container('jnlp') {
                     echo 'Building..'
                     echo env.BRANCH_NAME
                     
                     sh './mvnw clean package'
-                }
+                // }
             }
         }
         stage('Build Docker image') {
         	steps {
-                container('jnlp') {
+                // container('docker') {
                     echo 'Building Docker image...'
                     sh 'docker build -t $APPNAME .'
                     sh "docker login -u ${env.USER} -p ${env.PASS}"
                     sh 'docker push $APPNAME'
-                }
+                // }
         	}
         }
         // stage('Deploy') {
