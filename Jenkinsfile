@@ -15,7 +15,7 @@ pipeline {
                 container('jnlp') {
                     echo 'Building..'
                     echo env.BRANCH_NAME
-                    
+                    sh 'ls'
                     sh './mvnw clean package'
                 }
             }
@@ -24,6 +24,7 @@ pipeline {
         	steps {
                 container('docker') {
                     echo 'Building Docker image...'
+                    sh 'ls'
                     sh 'docker build -t $APPNAME .'
                     sh 'docker ps'
                     // sh "docker login -u ${env.USER} -p ${env.PASS}"
@@ -31,12 +32,5 @@ pipeline {
                 }
         	}
         }
-        // stage('Deploy') {
-        //     steps {
-        //         echo 'Deploying....'
-        //         sh 'docker rm -f $APPNAME || true'
-        //         sh 'docker run -d -p 8082:8082 --name $APPNAME $APPNAME'
-        //     }
-        // }
     }
 }
