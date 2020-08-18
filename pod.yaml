@@ -6,11 +6,6 @@ metadata:
 spec:
   containers:
   - name: "jnlp"
-    env:
-    - name: "PASS"
-      value: "asdasd"
-    - name: "USER"
-      value: "felipeandrade0918"
     image: "felipeandrade0918/jenkins-jnlp-aws-docker"
     imagePullPolicy: "IfNotPresent"
     volumeMounts:
@@ -20,7 +15,6 @@ spec:
     - mountPath: "/home/jenkins"
       name: "workspace-volume"
       readOnly: false
-    tty: true
     workingDir: "/home/jenkins"
   - name: "docker"
     args:
@@ -37,7 +31,6 @@ spec:
     - mountPath: "/home/jenkins"
       name: "workspace-volume"
       readOnly: false
-    tty: true
     workingDir: "/home/jenkins"
   volumes:
   - name: "docker-socket"
