@@ -21,17 +21,8 @@ pipeline {
                 container('docker') {
                     echo 'Building Docker image...'
                     sh 'docker build -t $APPNAME .'
-                    // sh "docker login -u ${env.USER} -p ${env.PASS}"
-                    // sh 'docker push $APPNAME'
                 }
         	}
         }
-        // stage('Deploy') {
-        //     steps {
-        //         echo 'Deploying....'
-        //         sh 'docker rm -f $APPNAME || true'
-        //         sh 'docker run -d -p 8082:8082 --name $APPNAME $APPNAME'
-        //     }
-        // }
     }
 }
