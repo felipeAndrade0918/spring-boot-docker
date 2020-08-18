@@ -21,8 +21,8 @@ pipeline {
                 container('docker') {
                     echo 'Building Docker image...'
                     sh 'docker build -t $APPNAME .'
-                    sh "docker login -u ${env.USER} -p ${env.PASS}"
-                    sh 'docker push $APPNAME'
+                    // sh "docker login -u ${env.USER} -p ${env.PASS}"
+                    // sh 'docker push $APPNAME'
                 }
         	}
         }
