@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Build Docker image') {
         	steps {
-                container('docker') {
+                container('jnlp') {
                     echo 'Building Docker image...'
                     sh 'docker build -t $APPNAME .'
                     sh "docker login -u ${env.USER} -p ${env.PASS}"
