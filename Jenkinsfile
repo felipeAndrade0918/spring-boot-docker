@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                container('jnlp') {
+                container('docker') {
                     echo 'Building..'
                     echo env.BRANCH_NAME
                     
