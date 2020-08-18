@@ -18,6 +18,9 @@ spec:
     tty: true
     workingDir: "/home/jenkins"
   - name: "docker"
+    env:
+    - name: "USER"
+      value: "USER!!"
     args:
     - "cat"
     command:
