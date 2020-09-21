@@ -11,7 +11,7 @@ pipeline {
                 echo 'Building..'
                 echo env.BRANCH_NAME
                 
-                sh './mvnw clean package'
+                sh './mvnw clean deploy'
             }
         }
         stage('Build Docker image') {
