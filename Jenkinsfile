@@ -11,7 +11,7 @@ pipeline {
                 echo 'Building..'
                 echo env.BRANCH_NAME
                 
-                sh './mvnw clean deploy -s settings.xml'
+                sh 'mvn clean deploy -s settings.xml'
             }
         }
         stage('Build Docker image') {
