@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Building..'
                 echo env.BRANCH_NAME
-                
+                sh 'ls ~/.m2/'
                 sh 'mvn clean deploy'
             }
         }
