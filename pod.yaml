@@ -10,7 +10,7 @@ spec:
     imagePullPolicy: "IfNotPresent"
     env:
       - name: "USER"
-        value: "USER!!"
+        value: "USER!"
     volumeMounts:
     - mountPath: "/var/run/docker.sock"
       name: "docker-socket"
